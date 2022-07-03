@@ -54,9 +54,9 @@ public class BaseWeapon : MonoBehaviour
             }
 
             if (!_isThreeAmmo) return;
-            AmmoCreate(_spawnPointLeft);
             AmmoCreate(_spawnPointRight);
-
+            AmmoCreate(_spawnPointLeft);
+            
             if (!_isTwoAmmo) return;
             StartCoroutine(AmmoCreateDelay(_spawnPointLeft, _weaponSo.TwoAmmoDelayTime));
             StartCoroutine(AmmoCreateDelay(_spawnPointRight, _weaponSo.TwoAmmoDelayTime));

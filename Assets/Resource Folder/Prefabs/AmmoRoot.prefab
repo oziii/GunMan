@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 3367687283977826097}
   - component: {fileID: 3367687283977826111}
   - component: {fileID: 3367687283977826110}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AmmoRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -29,5 +29,6 @@ namespace OziLib
         static public string COIN_COUNTER = "COIN_COUNTER";
 
         //Const Data
+        static public string AMMO_TAG = "Ammo";
     }
 }

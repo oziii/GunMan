@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94583ec2256115f488c204acb3126997, type: 3}
-  m_Name: WeaponSO
+  m_Script: {fileID: 11500000, guid: 39baed8c73f8c6847baa63de7355153c, type: 3}
+  m_Name: ButtonSO
   m_EditorClassIdentifier: 
-  _fireRate: 2
-  _fireRateBoost: 1
-  _ammoSpeedBoost: 1.5
-  _twoAmmoDelayTime: 0.1
+  _maxSpecialPower: 3

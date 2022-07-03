@@ -63,18 +63,13 @@ public class BaseWeapon : MonoBehaviour
         }
     }
 
-    private void AmmoCreate()
-    {
-        var ammo = Instantiate(_ammo, _spawnPoint.position, Quaternion.LookRotation(_spawnPoint.forward));
-        if(_isAmmoSpeedBoost)
-            ammo.ShootDir(_spawnPoint.forward, _weaponSo.AmmoSpeedBoost);
-        else
-            ammo.ShootDir(_spawnPoint.forward);
-    }
-
     private void AmmoCreate(Transform spawnPoint)
     {
         var ammo = Instantiate(_ammo, spawnPoint.position, Quaternion.LookRotation(spawnPoint.forward));
+        // var ammoPooledObject = ObjectPooler.SharedInstance.GetPooledObject(EventTags.AMMO_TAG);
+        // ammoPooledObject.transform.position = spawnPoint.position;
+        // ammoPooledObject.transform.rotation = Quaternion.LookRotation(spawnPoint.forward);
+        // var ammo = ammoPooledObject.GetComponent<Ammo>();
         if(_isAmmoSpeedBoost)
             ammo.ShootDir(spawnPoint.forward, _weaponSo.AmmoSpeedBoost);
         else

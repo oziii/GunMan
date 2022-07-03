@@ -41,12 +41,16 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Resource Folder\Scripts\ScriptableObjects\AmmoSO.cs" />
+     <Compile Include="Assets\Resource Folder\Scripts\ScriptableObjects\WeaponSO.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\ScriptableObjects\LevelSO.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\Helpers\PatrolObject.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\UIBase\LevelEndUI.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\UIBase\UIBase.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\Managers\DataManager.cs" />
+     <Compile Include="Assets\Resource Folder\Scripts\Ammo.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\OziLib\SingletonDontDestroy.cs" />
+     <Compile Include="Assets\Resource Folder\Scripts\BaseWeapon.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\ScriptableObjects\CharacterSO.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\CharacterRoot.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\Collectables\Collectable.cs" />
@@ -55,6 +59,7 @@
      <Compile Include="Assets\Resource Folder\Scripts\UIBase\InGameUI.cs" />
      <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\Managers\UIManager.cs" />
+     <Compile Include="Assets\Resource Folder\Scripts\Helpers\ObjectPooler.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\ScriptableObjects\CameraOffsetSO.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\Helpers\Level.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\ScriptableObjects\DataSO.cs" />
@@ -66,13 +71,11 @@
      <Compile Include="Assets\Resource Folder\Scripts\UIBase\StaticUIElements.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\UIBase\TapToPlayUI.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\OziLib\EventTags.cs" />
-     <Compile Include="Assets\Resource Folder\Scripts\BaseWeapon.cs" />
-     <Compile Include="Assets\Resource Folder\Scripts\Ammo.cs" />
-     <Compile Include="Assets\Resource Folder\Scripts\ScriptableObjects\AmmoSO.cs" />
-     <Compile Include="Assets\Resource Folder\Scripts\ScriptableObjects\WeaponSO.cs" />
+     <Compile Include="Assets\Resource Folder\Scripts\ScriptableObjects\ButtonSO.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\Resource Folder\3rdParty\Skybox Cubemap Extended\Shaders\Skybox Cubemap Extended.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />

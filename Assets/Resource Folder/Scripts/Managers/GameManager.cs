@@ -31,6 +31,31 @@ public class GameManager : MonoBehaviour
         //LevelCreater();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            EventManager.TriggerEvent(EventTags.THREE_AMMO, true);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            EventManager.TriggerEvent(EventTags.TWO_AMMO, true);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            EventManager.TriggerEvent(EventTags.AMMO_SPEED_BOOST, true);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            EventManager.TriggerEvent(EventTags.FIRE_RATE_BOOST, true);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            EventManager.TriggerEvent(EventTags.CHARACTER_SPEED_BOOST, true);
+        }
+        
+    }
+
     #endregion
 
     #region METHODS

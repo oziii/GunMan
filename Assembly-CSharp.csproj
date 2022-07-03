@@ -68,6 +68,8 @@
      <Compile Include="Assets\Resource Folder\Scripts\OziLib\EventTags.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\BaseWeapon.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\Ammo.cs" />
+     <Compile Include="Assets\Resource Folder\Scripts\ScriptableObjects\AmmoSO.cs" />
+     <Compile Include="Assets\Resource Folder\Scripts\ScriptableObjects\WeaponSO.cs" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.5f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>

@@ -15,6 +15,11 @@ public class CharacterRoot : MonoBehaviour, ITouchPanel
     private float _refVel;
     private bool _isLevelStart;
     private bool _isRun;
+
+    private int _isRunHash;
+    private int _isIdleHash;
+
+    private float _multiplySpeed = 1f;
     
     #region UNITY_METHODS
 
@@ -22,12 +27,14 @@ public class CharacterRoot : MonoBehaviour, ITouchPanel
     {
         EventManager.StartListening(EventTags.LEVEL_START, onLevelStart);
         EventManager.StartListening(EventTags.LEVEL_END, onLevelEnd);
+        EventManager.StartListening(EventTags.CHARACTER_SPEED_BOOST, onSpeedBoost);
     }
 
     private void OnDisable()
     {
         EventManager.StopListening(EventTags.LEVEL_START, onLevelStart);
         EventManager.StopListening(EventTags.LEVEL_END, onLevelEnd);
+        EventManager.StopListening(EventTags.CHARACTER_SPEED_BOOST, onSpeedBoost);
     }
 
     private void Start()
@@ -35,31 +42,29 @@ public class CharacterRoot : MonoBehaviour, ITouchPanel
         _touchPanelController ??= FindObjectOfType<TouchPanelController>();
         _touchPanelController.InitPanel(this);
         _initPos = transform.position;
+        _isIdleHash = Animator.StringToHash("isIdle");
+        _isRunHash = Animator.StringToHash("isRun");
     }
 
     private void Update()
     {
+        if (!_isLevelStart) return;
         if(!_isRun) return;
         // Vertical Movement
         var position = transform.position;
-        position += Vector3.forward * _characterSO.VerticalSpeed * Time.deltaTime;
+        position += Vector3.forward * _characterSO.VerticalSpeed * _multiplySpeed * Time.deltaTime;
 
         // Horizontal Movement
         position.x = Mathf.SmoothDamp(transform.position.x, _targetPos.x, ref _refVel, 0.07f);
         transform.position = position;
         
-        WeaponFireController();
+        _baseWeapon.Fire();
     }
 
     #endregion
 
     #region METHODS
 
-    private void WeaponFireController()
-    {
-        
-        _baseWeapon.Fire();
-    }
     
     #endregion
 
@@ -69,11 +74,15 @@ public class CharacterRoot : MonoBehaviour, ITouchPanel
     {
         _targetPos = transform.position;
         _isRun = true;
+        _animator.SetBool(_isRunHash, true);
+        _animator.SetBool(_isIdleHash, false);
     }
     
     public void OnPointUpAction(Vector2 delta)
     {
         _isRun = false;
+        _animator.SetBool(_isRunHash, false);
+        _animator.SetBool(_isIdleHash, true);
     }
 
     public void OnDragAction(Vector2 delta)
@@ -97,6 +106,12 @@ public class CharacterRoot : MonoBehaviour, ITouchPanel
     {
         _isLevelStart = true;
     }
-
+    
+    private void onSpeedBoost(object arg0)
+    {
+        if (arg0 is not bool isState) return;
+        _multiplySpeed = isState ? 2f : 1f;
+    }
+    
     #endregion
 } 

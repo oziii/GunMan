@@ -8,7 +8,6 @@ using UnityEngine.EventSystems;
 public interface ITouchPanel
 {
     void OnPointDownAction(Vector2 delta);
-
     void OnPointUpAction(Vector2 delta);
     void OnDragAction(Vector2 delta);
 }

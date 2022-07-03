@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0cebd886119640939f49134383a565a, type: 3}
-  m_Name: CameraOffsetSO
+  m_Script: {fileID: 11500000, guid: 03787c353713f8241ae567a04a383ade, type: 3}
+  m_Name: AmmoSO
   m_EditorClassIdentifier: 
-  _positionOffset: {x: 0, y: 7, z: -8}
-  _rotationOffset: {x: 35, y: 0, z: 0}
-  _autoOffset: 0
+  _firePower: 70000

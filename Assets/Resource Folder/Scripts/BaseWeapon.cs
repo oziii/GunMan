@@ -7,6 +7,8 @@ using UnityEngine;
 public class BaseWeapon : MonoBehaviour
 {
     [SerializeField] private Transform _spawnPoint;
+    [SerializeField] private Transform _spawnPointLeft;
+    [SerializeField] private Transform _spawnPointRight;
     [SerializeField] private Ammo _ammo;
     [SerializeField] private WeaponSO _weaponSo;
     private float _fireRate;
@@ -44,13 +46,20 @@ public class BaseWeapon : MonoBehaviour
         _fireRate = _isFireRateBoost ? _weaponSo.FireRateBoost : _weaponSo.FireRate;
         if (Time.time > _fireRate + _lastFire)
         {
-            AmmoCreate();
+            AmmoCreate(_spawnPoint);
             _lastFire = Time.time;
-
             if (_isTwoAmmo)
             {
-                Invoke(nameof(AmmoCreate), .1f);
+                StartCoroutine(AmmoCreateDelay(_spawnPoint, _weaponSo.TwoAmmoDelayTime));
             }
+
+            if (!_isThreeAmmo) return;
+            AmmoCreate(_spawnPointLeft);
+            AmmoCreate(_spawnPointRight);
+
+            if (!_isTwoAmmo) return;
+            StartCoroutine(AmmoCreateDelay(_spawnPointLeft, _weaponSo.TwoAmmoDelayTime));
+            StartCoroutine(AmmoCreateDelay(_spawnPointRight, _weaponSo.TwoAmmoDelayTime));
         }
     }
 
@@ -58,11 +67,26 @@ public class BaseWeapon : MonoBehaviour
     {
         var ammo = Instantiate(_ammo, _spawnPoint.position, Quaternion.LookRotation(_spawnPoint.forward));
         if(_isAmmoSpeedBoost)
-            ammo.ShootDir(_spawnPoint.forward, 1.5f);
+            ammo.ShootDir(_spawnPoint.forward, _weaponSo.AmmoSpeedBoost);
         else
             ammo.ShootDir(_spawnPoint.forward);
     }
 
+    private void AmmoCreate(Transform spawnPoint)
+    {
+        var ammo = Instantiate(_ammo, spawnPoint.position, Quaternion.LookRotation(spawnPoint.forward));
+        if(_isAmmoSpeedBoost)
+            ammo.ShootDir(spawnPoint.forward, _weaponSo.AmmoSpeedBoost);
+        else
+            ammo.ShootDir(spawnPoint.forward);
+    }
+
+    private IEnumerator AmmoCreateDelay(Transform spawnPoint,float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        AmmoCreate(spawnPoint);
+    }
+    
     #endregion
 
     #region ACTIONS

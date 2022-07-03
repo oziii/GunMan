@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94583ec2256115f488c204acb3126997, type: 3}
   m_Name: WeaponSO
   m_EditorClassIdentifier: 
-  _fireRate: 2
-  _fireRateBoost: 1
+  _fireRate: 0.5
+  _fireRateBoost: 0.2
+  _ammoSpeedBoost: 1.5
+  _twoAmmoDelayTime: 0.1

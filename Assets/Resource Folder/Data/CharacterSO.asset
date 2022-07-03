@@ -15,3 +15,4 @@ MonoBehaviour:
   _verticalSpeed: 10
   _horizontalSensitivity: 35
   _playerHorizontalClamp: 2
+  _verticalSpeedBoost: 2

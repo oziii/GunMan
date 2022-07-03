@@ -110,7 +110,7 @@ public class CharacterRoot : MonoBehaviour, ITouchPanel
     private void onSpeedBoost(object arg0)
     {
         if (arg0 is not bool isState) return;
-        _multiplySpeed = isState ? 2f : 1f;
+        _multiplySpeed = isState ? _characterSO.VerticalSpeedBoost : 1f;
     }
     
     #endregion

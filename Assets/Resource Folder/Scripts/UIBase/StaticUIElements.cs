@@ -7,9 +7,14 @@ using UnityEngine.UI;
 
 public class StaticUIElements : UIBase
 {
-    [SerializeField] private Text _coinText;
-    [SerializeField] private Text _levelText;
     [SerializeField] private ButtonSO _buttonSo;
+    [Header("Button Fields")]
+    [SerializeField] private Image _threeAmmoImage;
+    [SerializeField] private Image _twoAmmoImage;
+    [SerializeField] private Image _fireRateBoostImage;
+    [SerializeField] private Image _ammoSpeedBoostImage;
+    [SerializeField] private Image _characterSpeedBoostImage;
+    
     private int _buttonCount;
     private bool _isThreeAmmo;
     private bool _isTwoAmmo;
@@ -19,39 +24,23 @@ public class StaticUIElements : UIBase
     
     #region UNITY_METHODS
 
-    private void OnEnable()
+    private void Start()
     {
-        EventManager.StartListening(EventTags.COIN_COLLECT, onCoinCollect);
+        ButtonColorChanged(_threeAmmoImage, false);
+        ButtonColorChanged(_twoAmmoImage, false);
+        ButtonColorChanged(_ammoSpeedBoostImage, false);
+        ButtonColorChanged(_characterSpeedBoostImage, false);
+        ButtonColorChanged(_fireRateBoostImage, false);
     }
-
-    private void OnDisable()
-    {
-        EventManager.StopListening(EventTags.COIN_COLLECT, onCoinCollect);
-    }
-
-
 
     #endregion
 
     #region OVERRIDE
-
-    public override void ShowUI()
-    {
-        base.ShowUI();
-        //TextSet();
-    }
+    
 
     #endregion
 
     #region METHODS
-
-    private void TextSet()
-    {
-        var coinData = DataManager.instance.GetIntData(EventTags.COIN_COUNTER);
-        var levelData = DataManager.instance.GetIntData(EventTags.LEVEL_COUNTER);
-        _coinText.text = coinData.ToString();
-        _levelText.text = "LEVEL " + levelData;
-    }
 
     private bool GetButtonCountControl(bool buttonState)
     {
@@ -74,14 +63,18 @@ public class StaticUIElements : UIBase
             return true;
         }
     }
-    
+
+    private void ButtonColorChanged(Image buttonImage, bool isButtonState)
+    {
+        buttonImage.color = isButtonState ? _buttonSo.ButtonSelectedColor : _buttonSo.ButtonUnselectedColor;
+    }
     #endregion
 
     #region BUTTON_METHODS
 
     public void OnClickExitButton()
     {
-        EventManager.TriggerEvent(EventTags.LEVEL_END, this);
+        EventManager.TriggerEvent(EventTags.NEXT_LEVEL, this);
     }
     
     public void OnClickThreeAmmo()
@@ -89,6 +82,7 @@ public class StaticUIElements : UIBase
         if(!GetButtonCountControl(!_isThreeAmmo)) return;
         _isThreeAmmo = !_isThreeAmmo;
         EventManager.TriggerEvent(EventTags.THREE_AMMO, _isThreeAmmo);
+        ButtonColorChanged(_threeAmmoImage, _isThreeAmmo);
     }
 
     public void OnClickTwoAmmo()
@@ -96,6 +90,7 @@ public class StaticUIElements : UIBase
         if(!GetButtonCountControl(!_isTwoAmmo)) return;
         _isTwoAmmo = !_isTwoAmmo;
         EventManager.TriggerEvent(EventTags.TWO_AMMO, _isTwoAmmo);
+        ButtonColorChanged(_twoAmmoImage, _isTwoAmmo);
     }
 
     public void OnClickFireRateBoost()
@@ -103,13 +98,15 @@ public class StaticUIElements : UIBase
         if(!GetButtonCountControl(!_isFireRateBoost)) return;
         _isFireRateBoost = !_isFireRateBoost;
         EventManager.TriggerEvent(EventTags.FIRE_RATE_BOOST, _isFireRateBoost);
+        ButtonColorChanged(_fireRateBoostImage, _isFireRateBoost);
     }
 
     public void OnClickAmmoSpeedBoost()
     {
         if(!GetButtonCountControl(!_isAmmoSpeedBoost)) return;
         _isAmmoSpeedBoost = !_isAmmoSpeedBoost;
-        EventManager.TriggerEvent(EventTags.FIRE_RATE_BOOST, _isAmmoSpeedBoost);
+        EventManager.TriggerEvent(EventTags.AMMO_SPEED_BOOST, _isAmmoSpeedBoost);
+        ButtonColorChanged(_ammoSpeedBoostImage, _isAmmoSpeedBoost);
     }
 
     public void OnClickCharacterSpeedBoost()
@@ -117,20 +114,13 @@ public class StaticUIElements : UIBase
         if(!GetButtonCountControl(!_isCharacterSpeedBoost)) return;
         _isCharacterSpeedBoost = !_isCharacterSpeedBoost;
         EventManager.TriggerEvent(EventTags.CHARACTER_SPEED_BOOST, _isCharacterSpeedBoost);
+        ButtonColorChanged(_characterSpeedBoostImage, _isCharacterSpeedBoost);
     }
     
 
     #endregion
     
     #region ACTIONS
-
-    private void onCoinCollect(object arg0)
-    {
-        var data = DataManager.instance.GetIntData(EventTags.COIN_COUNTER);
-        data++;
-        _coinText.text = data.ToString();
-        DataManager.instance.SetIntData(EventTags.COIN_COUNTER, data);
-    }
 
     #endregion
 }

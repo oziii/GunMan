@@ -18,7 +18,8 @@ public class CharacterRoot : MonoBehaviour, ITouchPanel
 
     private int _isRunHash;
     private int _isIdleHash;
-
+    private const string DANCE_NAME = "Chicken Dance";
+    
     private float _multiplySpeed = 1f;
     
     #region UNITY_METHODS
@@ -100,6 +101,7 @@ public class CharacterRoot : MonoBehaviour, ITouchPanel
     private void onLevelEnd(object arg0)
     {
         _isLevelStart = false;
+        _animator.CrossFadeInFixedTime(DANCE_NAME, .2f);
     }
 
     private void onLevelStart(object arg0)

@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ammoSo: {fileID: 11400000, guid: b9b7542ca166dfe4b9249ac17bf11fe4, type: 2}
+  _trailRenderer: {fileID: 3367687283977826111}
 --- !u!135 &3367687283977826097
 SphereCollider:
   m_ObjectHideFlags: 0

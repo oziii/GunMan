@@ -6,17 +6,12 @@ using UnityEngine.UI;
 
 public class LevelEndUI : UIBase
 {
-    [SerializeField] private Text _totalCoinText;
+    #region BUTTON_METHODS
 
-    public override void ShowUI()
-    {
-        base.ShowUI();
-        var currentCoin = DataManager.instance.GetCurrentCoin();
-        _totalCoinText.text = "Collect " + currentCoin + "X";
-    }
-
-    public void NextLevelButton()
+    public void OnClickRestartButton()
     {
         EventManager.TriggerEvent(EventTags.NEXT_LEVEL, this);
     }
+
+    #endregion
 }

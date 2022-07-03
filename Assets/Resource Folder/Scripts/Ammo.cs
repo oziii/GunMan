@@ -6,22 +6,29 @@ using UnityEngine;
 public class Ammo : MonoBehaviour
 {
     [SerializeField] private AmmoSO _ammoSo;
-    private Vector3 _shootDir;
+    [SerializeField] private TrailRenderer _trailRenderer;
     private Rigidbody _rb;
     private bool _isShoot;
 
-    public void ShootDir(Vector3 shootDir, float shootPower = 1)
+    public void ShootDir(Vector3 shootDir, float shootPower)
     {
-        _shootDir = shootDir;
         _rb = GetComponent<Rigidbody>();
         _rb.isKinematic = false;
         _rb.velocity = Vector3.zero;
         gameObject.SetActive(true);
         var tempPower = _ammoSo.FirePower * shootPower;
+        _trailRenderer.enabled = true;
         _rb.AddForce(shootDir * Time.fixedDeltaTime * tempPower);
+        
     }
 
     private void OnBecameInvisible()
+    {
+        Invoke(nameof(OnCloseObject), 15f);
+        _trailRenderer.enabled = false;
+    }
+
+    private void OnCloseObject()
     {
         gameObject.SetActive(false);
         _rb.isKinematic = true;

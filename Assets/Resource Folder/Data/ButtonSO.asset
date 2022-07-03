@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: ButtonSO
   m_EditorClassIdentifier: 
   _maxSpecialPower: 3
+  _buttonSelectedColor: {r: 0.12454414, g: 1, b: 0, a: 1}
+  _buttonUnselectedColor: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}

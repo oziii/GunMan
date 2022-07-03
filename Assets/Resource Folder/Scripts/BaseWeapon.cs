@@ -9,7 +9,6 @@ public class BaseWeapon : MonoBehaviour
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private Transform _spawnPointLeft;
     [SerializeField] private Transform _spawnPointRight;
-    [SerializeField] private Ammo _ammo;
     [SerializeField] private WeaponSO _weaponSo;
     private float _fireRate;
     private float _lastFire;
@@ -65,15 +64,14 @@ public class BaseWeapon : MonoBehaviour
 
     private void AmmoCreate(Transform spawnPoint)
     {
-        var ammo = Instantiate(_ammo, spawnPoint.position, Quaternion.LookRotation(spawnPoint.forward));
-        // var ammoPooledObject = ObjectPooler.SharedInstance.GetPooledObject(EventTags.AMMO_TAG);
-        // ammoPooledObject.transform.position = spawnPoint.position;
-        // ammoPooledObject.transform.rotation = Quaternion.LookRotation(spawnPoint.forward);
-        // var ammo = ammoPooledObject.GetComponent<Ammo>();
+        var ammoPooledObject = ObjectPooler.instance.GetPooledObject(EventTags.AMMO_TAG);
+        ammoPooledObject.transform.position = spawnPoint.position;
+        ammoPooledObject.transform.rotation = Quaternion.LookRotation(spawnPoint.forward);
+        var ammo = ammoPooledObject.GetComponent<Ammo>();
         if(_isAmmoSpeedBoost)
             ammo.ShootDir(spawnPoint.forward, _weaponSo.AmmoSpeedBoost);
         else
-            ammo.ShootDir(spawnPoint.forward);
+            ammo.ShootDir(spawnPoint.forward, 1);
     }
 
     private IEnumerator AmmoCreateDelay(Transform spawnPoint,float delayTime)

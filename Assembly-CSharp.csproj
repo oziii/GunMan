@@ -65,13 +65,14 @@
      <Compile Include="Assets\Resource Folder\Scripts\ScriptableObjects\DataSO.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\OziLib\EventManager.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\OziLib\Lib Test Scripts\EventTest.cs" />
+     <Compile Include="Assets\Resource Folder\Scripts\ScriptableObjects\ButtonSO.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\Managers\CameraFollow.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\OziLib\Lib Test Scripts\TriggerEventTest.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\UIBase\StaticUIElements.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\UIBase\TapToPlayUI.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\OziLib\EventTags.cs" />
-     <Compile Include="Assets\Resource Folder\Scripts\ScriptableObjects\ButtonSO.cs" />
+     <Compile Include="Assets\Resource Folder\Scripts\LevelEnd.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

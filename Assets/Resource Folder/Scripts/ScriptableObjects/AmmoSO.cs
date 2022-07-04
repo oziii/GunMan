@@ -6,6 +6,6 @@ using UnityEngine;
 public class AmmoSO : ScriptableObject
 {
     [SerializeField] private float _firePower;
-
+    
     public float FirePower => _firePower;
 } 

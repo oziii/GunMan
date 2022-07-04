@@ -59,7 +59,7 @@
      <Compile Include="Assets\Resource Folder\Scripts\UIBase\InGameUI.cs" />
      <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\Managers\UIManager.cs" />
-     <Compile Include="Assets\Resource Folder\Scripts\Helpers\ObjectPooler.cs" />
+     <Compile Include="Assets\Resource Folder\Scripts\OziLib\ObjectPooler.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\ScriptableObjects\CameraOffsetSO.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\Helpers\Level.cs" />
      <Compile Include="Assets\Resource Folder\Scripts\ScriptableObjects\DataSO.cs" />
